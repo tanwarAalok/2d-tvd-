@@ -41,3 +41,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Bg_back
+    uniqueID: 913417661
+    locked: 0
+  - name: Bg_mid
+    uniqueID: 897162737
+    locked: 0
+  - name: Bg_front
+    uniqueID: 2374602879
+    locked: 0
+  - name: Ground
+    uniqueID: 3408352455
+    locked: 0
+  - name: Envronment
+    uniqueID: 180210515
+    locked: 0
+  - name: Player
+    uniqueID: 3105253527
+    locked: 0
+  - name: Obstacles
+    uniqueID: 2340356475
+    locked: 0
