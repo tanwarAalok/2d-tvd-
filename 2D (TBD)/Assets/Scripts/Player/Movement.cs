@@ -18,5 +18,14 @@ public class Movement : MonoBehaviour
 
         pos.x += axis * speed *Time.deltaTime;
         transform.position = pos;
+
+        if (axis != 0)
+        {
+            GetComponent<Animator>().SetBool("isRunning", true);
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("isRunning", false);
+        }
     }
 }
