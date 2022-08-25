@@ -53,11 +53,14 @@ TagManager:
   - name: Envronment
     uniqueID: 180210515
     locked: 0
-  - name: Ground
-    uniqueID: 3408352455
-    locked: 0
   - name: Player
     uniqueID: 3105253527
+    locked: 0
+  - name: Enemy
+    uniqueID: 3883763981
+    locked: 0
+  - name: Ground
+    uniqueID: 3408352455
     locked: 0
   - name: Obstacles
     uniqueID: 2340356475
