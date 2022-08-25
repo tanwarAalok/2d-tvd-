@@ -16,19 +16,30 @@ public class Attack : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E) && Input.GetKey(KeyCode.Mouse0))
         {
+            isAttacking = true;
+            StartCoroutine(WaitForAnimation());
             animator.Play("player_attack3");
         }
 
         if (Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.Mouse0))
         {
+            isAttacking = true;
+            StartCoroutine(WaitForAnimation());
             animator.Play("player_attack1");
         }
 
         if(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.Mouse0))
         {
+            isAttacking = true;
+            StartCoroutine(WaitForAnimation());
             animator.Play("player_attack2");
         }
 
-        
+    }
+
+    IEnumerator WaitForAnimation()
+    {
+        yield return new WaitForSeconds(1f);
+        isAttacking = false;
     }
 }
