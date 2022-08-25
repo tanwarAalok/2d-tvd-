@@ -11,9 +11,8 @@ public class FirstFight : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Goblin.SetActive(true);
-        Vector3 camPos = new Vector3(42.5f, 1f, -10f);
-        cam.transform.position = Vector3.Lerp(cam.transform.position, camPos, 2f * Time.deltaTime);
+        Vector3 camPos = new Vector3(42.5f, 2f, -10f);
+        cam.transform.position = camPos;
         cam.GetComponent<CameraFollow>().enabled = false;
-        Debug.Log(other);
     }
 }
