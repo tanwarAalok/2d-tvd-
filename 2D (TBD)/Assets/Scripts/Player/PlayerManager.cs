@@ -10,7 +10,7 @@ public class PlayerManager : MonoBehaviour
     {
         healthBar = GetComponentInChildren<HealthBar>();
         healthBar.SetMaxHealth(100);
-        healthBar.SetHealth(100);
+        healthBar.SetHealth(currHealth);
     }
 
     // Update is called once per frame
@@ -18,5 +18,11 @@ public class PlayerManager : MonoBehaviour
     {
         currHealth = Mathf.Clamp(currHealth, 0, 100);
         healthBar.SetHealth(currHealth);
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if(other.gameObject.CompareTag("enemy attack")){
+            // currHealth -= other.gameObject.GetComponent<EnemyDamage>().damage;
+        }
     }
 }
