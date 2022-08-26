@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private Transform cam;
     private Vector3 pos;
 
     // Update is called once per frame
@@ -18,6 +19,7 @@ public class Movement : MonoBehaviour
             else if(axis > 0) GetComponent<SpriteRenderer>().flipX = false;
 
             pos.x += axis * speed * Time.deltaTime;
+            pos.x = Mathf.Clamp(pos.x, cam.position.x - 8f, cam.position.x + 8f);
             transform.position = pos;
 
             if (Input.GetAxis("Horizontal") != 0)
