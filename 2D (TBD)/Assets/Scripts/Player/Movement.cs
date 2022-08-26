@@ -10,22 +10,24 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        pos = transform.position;
-        float axis = Input.GetAxis("Horizontal");
+        if(!Attack.isAttacking){
+            float axis = Input.GetAxis("Horizontal");
+            pos = transform.position;
 
-        if (axis < 0) GetComponent<SpriteRenderer>().flipX = true;
-        else GetComponent<SpriteRenderer>().flipX = false;
+            if (axis < 0) GetComponent<SpriteRenderer>().flipX = true;
+            else if(axis > 0) GetComponent<SpriteRenderer>().flipX = false;
 
-        pos.x += axis * speed *Time.deltaTime;
-        transform.position = pos;
+            pos.x += axis * speed * Time.deltaTime;
+            transform.position = pos;
 
-        if (axis != 0)
-        {
-            GetComponent<Animator>().SetBool("isRunning", true);
-        }
-        else
-        {
-            GetComponent<Animator>().SetBool("isRunning", false);
+            if (Input.GetAxis("Horizontal") != 0)
+            {
+                GetComponent<Animator>().SetBool("isRunning", true);
+            }
+            else
+            {
+                GetComponent<Animator>().SetBool("isRunning", false);
+            }
         }
     }
 }
