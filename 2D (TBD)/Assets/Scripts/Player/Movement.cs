@@ -15,8 +15,8 @@ public class Movement : MonoBehaviour
             float axis = Input.GetAxis("Horizontal");
             pos = transform.position;
 
-            if (axis < 0) GetComponent<SpriteRenderer>().flipX = true;
-            else if(axis > 0) GetComponent<SpriteRenderer>().flipX = false;
+            if (axis < 0) transform.rotation = Quaternion.Euler(0, 180, 0);
+            else if(axis > 0) transform.rotation = Quaternion.Euler(0, 0, 0);
 
             pos.x += axis * speed * Time.deltaTime;
             pos.x = Mathf.Clamp(pos.x, cam.position.x - 8f, cam.position.x + 8f);
