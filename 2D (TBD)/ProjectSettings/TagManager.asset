@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - enemy attack
+  - playerAttack
   layers:
   - Default
   - TransparentFX
@@ -64,4 +66,7 @@ TagManager:
     locked: 0
   - name: Obstacles
     uniqueID: 2340356475
+    locked: 0
+  - name: UI
+    uniqueID: 1389791573
     locked: 0
