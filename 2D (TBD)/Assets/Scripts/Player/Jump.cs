@@ -10,6 +10,9 @@ public class Jump : MonoBehaviour
     [SerializeField] private LayerMask platformLayerMask;
     private Animator animator;
 
+    public static bool isJumping = false;
+
+
     void Start()
     {
         playerCollider = transform.GetComponent<CapsuleCollider2D>();
@@ -26,6 +29,8 @@ public class Jump : MonoBehaviour
             animator.Play("player_jump");
 
         }
+
+        isJumping = !isGrounded();
     }
 
     private bool isGrounded()

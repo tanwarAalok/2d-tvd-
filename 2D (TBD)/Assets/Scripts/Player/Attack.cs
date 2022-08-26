@@ -1,11 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
     private Animator animator;
     public static bool isAttacking = false;
+    
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -14,32 +14,42 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.E) && Input.GetKey(KeyCode.Mouse0))
-        {
-            isAttacking = true;
-            StartCoroutine(WaitForAnimation());
-            animator.Play("player_attack3");
-        }
+        if(!Jump.isJumping){
+            if (Input.GetKey(KeyCode.E) && Input.GetKey(KeyCode.Mouse0) && !isAttacking)
+            {
+                animator.SetBool("isRunning", false);
+                animator.SetTrigger("attack");
+                isAttacking = true;
+                animator.SetInteger("attackIndex", 2);
+                StartCoroutine(WaitForAnimation());
 
-        if (Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.Mouse0))
-        {
-            isAttacking = true;
-            StartCoroutine(WaitForAnimation());
-            animator.Play("player_attack1");
-        }
+            }
 
-        if(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.Mouse0))
-        {
-            isAttacking = true;
-            StartCoroutine(WaitForAnimation());
-            animator.Play("player_attack2");
+            if (Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.Mouse0) && !isAttacking)
+            {
+                animator.SetBool("isRunning", false);
+                animator.SetTrigger("attack");
+                isAttacking = true;
+                animator.SetInteger("attackIndex", 0);
+                StartCoroutine(WaitForAnimation());
+
+            }
+
+            if(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.Mouse0) && !isAttacking)
+            {
+                animator.SetBool("isRunning", false);
+                animator.SetTrigger("attack");
+                isAttacking = true;
+                animator.SetInteger("attackIndex", 1);
+                StartCoroutine(WaitForAnimation());
+            }
         }
 
     }
 
     IEnumerator WaitForAnimation()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.8f);
         isAttacking = false;
     }
 }
