@@ -39,11 +39,11 @@ public class GoblinAI : MonoBehaviour
 
         if(diff > 0)
         {
-            spriteRenderer.flipX = true;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         else if(diff < 0)
         {
-            spriteRenderer.flipX = false;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }
     }
 
