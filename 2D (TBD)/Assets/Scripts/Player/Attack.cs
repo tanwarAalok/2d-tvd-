@@ -21,7 +21,7 @@ public class Attack : MonoBehaviour
                 animator.SetTrigger("attack");
                 isAttacking = true;
                 animator.SetInteger("attackIndex", 2);
-                StartCoroutine(WaitForAnimation());
+                StartCoroutine(WaitForAnimation(0.8f));
 
             }
 
@@ -31,7 +31,7 @@ public class Attack : MonoBehaviour
                 animator.SetTrigger("attack");
                 isAttacking = true;
                 animator.SetInteger("attackIndex", 0);
-                StartCoroutine(WaitForAnimation());
+                StartCoroutine(WaitForAnimation(0.2f));
 
             }
 
@@ -41,15 +41,15 @@ public class Attack : MonoBehaviour
                 animator.SetTrigger("attack");
                 isAttacking = true;
                 animator.SetInteger("attackIndex", 1);
-                StartCoroutine(WaitForAnimation());
+                StartCoroutine(WaitForAnimation(0.5f));
             }
         }
 
     }
 
-    IEnumerator WaitForAnimation()
+    IEnumerator WaitForAnimation(float seconds)
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(seconds);
         isAttacking = false;
     }
 }
