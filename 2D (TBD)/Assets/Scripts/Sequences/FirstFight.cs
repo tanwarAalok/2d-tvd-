@@ -14,5 +14,6 @@ public class FirstFight : MonoBehaviour
         Vector3 camPos = new Vector3(42.5f, 4f, -10f);
         cam.transform.position = camPos;
         cam.GetComponent<CameraFollow>().enabled = false;
+        this.GetComponent<BoxCollider2D>().enabled = false;
     }
 }
