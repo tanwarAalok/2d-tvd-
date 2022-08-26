@@ -9,6 +9,7 @@ public class GoblinAI : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    private bool isAttacking = false;
 
     private void Start()
     {
@@ -20,14 +21,18 @@ public class GoblinAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!animator.GetBool("isAttacking"))
-        transform.position = Vector2.MoveTowards(transform.position, Player.position, 3f * Time.deltaTime);
-
         float dist = Vector2.Distance(transform.position, Player.position);
-
-        if(rb.velocity != Vector2.zero)
+        if (!isAttacking)
         {
-            animator.SetBool("isRunning", true);
+            if (dist < 2.85f)
+            {
+                StartCoroutine(Attack());
+            }
+            else
+            {
+                transform.position = Vector2.MoveTowards(transform.position, Player.position, 3f * Time.deltaTime);
+                animator.SetBool("isRunning", true);
+            }
         }
 
         float diff = transform.position.x - Player.position.x;
@@ -40,17 +45,16 @@ public class GoblinAI : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
-
-
-        if(dist < 2.85f)
-        {
-            animator.SetBool("isRunning", false);
-            animator.SetBool("isAttacking", true);
-            animator.SetInteger("attackIndex", Random.Range(0, 2));
-        }
-        else
-        {
-            animator.SetBool("isAttacking", false);
-        }
     }
+
+    IEnumerator Attack()
+    {
+        animator.SetTrigger("attack");
+        isAttacking = true;
+        animator.SetBool("isRunning", false);
+        animator.SetInteger("attackIndex", Random.Range(0, 2));
+        yield return new WaitForSeconds(1f);
+        isAttacking = false;
+    }
+
 }
