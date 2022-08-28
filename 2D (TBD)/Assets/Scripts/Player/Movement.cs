@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!Attack.isAttacking && !PlayerManager.isPlayerDead){
+        if(!Attack.isAttacking && !PlayerManager.isPlayerDead && !PlayerManager.isTakingHit){
             float axis = Input.GetAxis("Horizontal");
             pos = transform.position;
 

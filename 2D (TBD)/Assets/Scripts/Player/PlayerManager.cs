@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     HealthBar healthBar;
     public static bool isPlayerDead = false;
+    public static bool isTakingHit = false;
     [SerializeField] int currHealth = 100;
     void Start()
     {
@@ -33,8 +34,18 @@ public class PlayerManager : MonoBehaviour
         if(other.gameObject.CompareTag("enemy attack")){
             Debug.Log(other.gameObject.GetComponent<AttackDamage>().damage);
             currHealth -= other.gameObject.GetComponent<AttackDamage>().damage;
+            isTakingHit = true;
+            GetComponent<Animator>().SetTrigger("takeHit");
+            GetComponent<Animator>().SetInteger("hitIndex", Random.Range(0, 2));
+            StartCoroutine(Wait());
         }
     }
+
+    IEnumerator Wait(){
+        yield return new WaitForSeconds(0.5f);
+        isTakingHit = false;
+    }
+
 
     IEnumerator Disappear()
     {
