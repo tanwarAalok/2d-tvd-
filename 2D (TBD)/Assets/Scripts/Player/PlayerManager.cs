@@ -23,6 +23,7 @@ public class PlayerManager : MonoBehaviour
         if(currHealth == 0){
             GetComponent<Animator>().Play("player_death");
             isPlayerDead = true;
+            StartCoroutine(Disappear());
             Debug.Log("Change scene");
         }
     }
@@ -33,5 +34,11 @@ public class PlayerManager : MonoBehaviour
             Debug.Log(other.gameObject.GetComponent<AttackDamage>().damage);
             currHealth -= other.gameObject.GetComponent<AttackDamage>().damage;
         }
+    }
+
+    IEnumerator Disappear()
+    {
+        yield return new WaitForSeconds(5f);
+        Destroy(this.gameObject);
     }
 }

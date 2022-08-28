@@ -45,6 +45,6 @@ public class EnemyHealth : MonoBehaviour
     IEnumerator Disappear()
     {
         yield return new WaitForSeconds(5f);
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 }

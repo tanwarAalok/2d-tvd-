@@ -23,7 +23,7 @@ public class Jump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isGrounded() && Input.GetKeyDown(KeyCode.Space))
+        if (isGrounded() && Input.GetKeyDown(KeyCode.Space) && !PlayerManager.isPlayerDead)
         {
             rigidBody.velocity = Vector2.up * jumpVelocity;
             animator.Play("player_jump");
