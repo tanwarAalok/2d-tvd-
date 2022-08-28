@@ -39,6 +39,7 @@ public class EnemyHealth : MonoBehaviour
         if(other.gameObject.CompareTag("playerAttack")){
             Debug.Log(other.gameObject.GetComponent<AttackDamage>().damage);
             currHealth -= other.gameObject.GetComponent<AttackDamage>().damage;
+            animator.SetTrigger("takeHit");
         }
     }
 
