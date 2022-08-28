@@ -14,7 +14,7 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!Jump.isJumping){
+        if(!Jump.isJumping && !PlayerManager.isTakingHit){
             if (Input.GetKey(KeyCode.E) && Input.GetKey(KeyCode.Mouse0) && !isAttacking)
             {
                 animator.SetBool("isRunning", false);
