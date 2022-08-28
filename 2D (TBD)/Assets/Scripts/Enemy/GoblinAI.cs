@@ -21,29 +21,31 @@ public class GoblinAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float dist = Vector2.Distance(transform.position, Player.position);
-        if (!isAttacking)
-        {
-            if (dist < 2.85f)
+        if(!PlayerManager.isPlayerDead){
+            float dist = Vector2.Distance(transform.position, Player.position);
+            if (!isAttacking)
             {
-                StartCoroutine(Attack());
+                if (dist < 2.85f)
+                {
+                    StartCoroutine(Attack());
+                }
+                else
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, Player.position, 3f * Time.deltaTime);
+                    animator.SetBool("isRunning", true);
+                }
             }
-            else
+
+            float diff = transform.position.x - Player.position.x;
+
+            if(diff > 0)
             {
-                transform.position = Vector2.MoveTowards(transform.position, Player.position, 3f * Time.deltaTime);
-                animator.SetBool("isRunning", true);
+                transform.rotation = Quaternion.Euler(0, 0, 0);
             }
-        }
-
-        float diff = transform.position.x - Player.position.x;
-
-        if(diff > 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        else if(diff < 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            else if(diff < 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
         }
     }
 
