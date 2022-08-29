@@ -6,7 +6,7 @@ public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform Player;
     [SerializeField] private float SmoothSpeed = 5f;
-    [SerializeField] private float maxX, minX;
+    [SerializeField] public float maxX, minX;
     private Vector3 newPos;
 
     // Update is called once per frame

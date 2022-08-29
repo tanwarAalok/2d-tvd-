@@ -10,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] int maxHealth = 100;
     [SerializeField] string AIScript;
     private Animator animator;
+    [HideInInspector] public bool isDead = false;
 
     void Start()
     {
@@ -31,6 +32,7 @@ public class EnemyHealth : MonoBehaviour
             GetComponent<CapsuleCollider2D>().enabled = false;
             Destroy(GetComponent<Rigidbody2D>());
             StartCoroutine(Disappear());
+            isDead = true;
         }
     }
 
